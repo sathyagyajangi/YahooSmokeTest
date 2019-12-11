@@ -20,7 +20,7 @@ namespace YahooSmokeTest
 
             string handle = driver.CurrentWindowHandle;
 
-            for (int i = 2; i <= 11; i++)
+            for (int i = 6; i <= 11; i++)
             {
 
                 string title = driver.FindElement(By.XPath("/html/body/div[1]/header/div/section/div/div[3]/div/nav/ul/li[" + i + "]/a")).GetAttribute("title");
@@ -49,8 +49,8 @@ namespace YahooSmokeTest
 
                         FunctionLibrary.clickAction(driver, "/html/body/div[1]/div/myapp/section[1]/div/div/div/div/section/div/div/div[2]/div/a[" + j + "]", "xpath");
 
-                        string subtitle = driver.Title;
-                        Console.WriteLine(subtitle);
+                       
+                        Console.WriteLine(driver.Title);
 
                     }
 
@@ -62,6 +62,8 @@ namespace YahooSmokeTest
 
                     driver.Navigate().Back();
                 }
+
+                driver.Close();
 
             }
 
