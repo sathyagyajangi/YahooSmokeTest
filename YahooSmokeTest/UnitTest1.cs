@@ -47,14 +47,14 @@ namespace YahooSmokeTest
 
                     Thread.Sleep(2000);
 
-                    for (int j = 2; j <= 10; j++)
+                    for (int j = 2; j <= 8; j++)
                     {
 
                         FunctionLibrary.waitForElement(driver, "/html/body/div[1]/div/myapp/section[1]/div/div/div/div/section/div/div/div[2]/div/a[" + j + "]");
 
                         FunctionLibrary.clickAction(driver, "/html/body/div[1]/div/myapp/section[1]/div/div/div/div/section/div/div/div[2]/div/a[" + j + "]", "xpath");
-                                                                    
-                       
+
+                        Thread.Sleep(1000);
                         Console.WriteLine(driver.Title);
 
                     }
