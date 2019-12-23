@@ -62,11 +62,7 @@ namespace YahooSmokeTest
 
                 }
 
-                if (title.Contains("Rankings"))
-                {
-
-                    driver.Navigate().Back();
-                }
+                
 
                
 
