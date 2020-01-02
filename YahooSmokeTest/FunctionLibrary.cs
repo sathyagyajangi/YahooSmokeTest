@@ -80,7 +80,7 @@ namespace YahooSmokeTest
 
             Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
 
-            ss.SaveAsFile("D:\\ISLproject\\ScreenShots\\" + imgName + ".png");
+            ss.SaveAsFile(@"C:\Users\Satyanarayan\source\repos\YahooSmokeTest\YahooSmokeTest\Screenshot\\" + imgName + ".png");
 
         }
 
