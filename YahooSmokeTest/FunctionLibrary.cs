@@ -88,7 +88,7 @@ namespace YahooSmokeTest
         {
             excel.Application xlapp = new excel.Application();
 
-            excel.Workbook xlworkbook = xlapp.Workbooks.Open(@"D:\FindingBrokenImages\TestInput.xlsx");
+            excel.Workbook xlworkbook = xlapp.Workbooks.Open(@"C:\Users\Satyanarayan\source\git\YahooSmokeTest\YahooSmokeTest\TestInput\input.xlsx");
 
             excel._Worksheet xlworksheet = xlworkbook.Sheets[S];
 
@@ -141,8 +141,16 @@ namespace YahooSmokeTest
 
         }
 
-      
+      public static string Genaratedate()
+        {
+              string timestamp = DateTime.Now.ToString(("dd/MM/yyyy-HH-mm-ss"));
 
-       
+            return timestamp;
+
+        }
+
+     
+        
+
     }
 }

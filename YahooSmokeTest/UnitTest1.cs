@@ -15,18 +15,20 @@ namespace YahooSmokeTest
         IWebDriver driver;
 
 
+
+        ExtentHtmlReporter reporter = new ExtentHtmlReporter("C:\\Users\\Satyanarayan\\source\\git\\YahooSmokeTest\\YahooSmokeTest\\Reports\\Local\\" + FunctionLibrary.Genaratedate() + "\\yahoo.html");
+        ExtentReports extent = new ExtentReports();
+
+
         [TestMethod]
       
         public void Local() 
         {
 
             IWebDriver driver = new ChromeDriver();
-            string imgName = DateTime.Now.ToString("dd/MM/yyyy-HH-mm-ss");
 
-            ExtentHtmlReporter reporter = new ExtentHtmlReporter("C:\\Users\\Satyanarayan\\source\\git\\YahooSmokeTest\\YahooSmokeTest\\Reports\\Local\\"  + imgName + "\\yahoo.html");
-            ExtentReports extent = new ExtentReports();
+
             extent.AttachReporter(reporter);
-
             var test = extent.CreateTest("yahoolocal");
 
             try
@@ -39,10 +41,17 @@ namespace YahooSmokeTest
 
 
 
-                for (int i = 2; i <= 11; i++)
+                for (int i = 2; i <= 10; i++)
                 {
 
                     string title = driver.FindElement(By.XPath("/html/body/div[1]/header/div/section/div/div[3]/div/nav/ul/li[" + i + "]/a")).GetAttribute("title");
+
+
+                    string actTitle = FunctionLibrary.ReadDataExcel(1, 1, i);
+
+                    title.Contains(actTitle);
+
+                    test.Log(Status.Info, "Title verified");
 
                     FunctionLibrary.waitForElement(driver, "/html/body/div[1]/header/div/section/div/div[3]/div/nav/ul/li[" + i + "]/a");
 
@@ -52,6 +61,8 @@ namespace YahooSmokeTest
 
 
                     Console.WriteLine(title);
+
+                   
 
                     test.Log(Status.Pass, title  +  "Test case Passsed");
 
@@ -72,7 +83,19 @@ namespace YahooSmokeTest
                             FunctionLibrary.clickAction(driver, "/html/body/div[1]/div/myapp/section[1]/div/div/div/div/section/div/div/div[2]/div/a[" + j + "]", "xpath");
 
                             test.Log(Status.Pass, driver.Title +  "Test case Passsed");
+
+
+                            string expSerTitle = driver.Title;
+                                
+                            string actSerTitile = FunctionLibrary.ReadDataExcel(1, 2, j);
+
+                            actSerTitile.Contains(expSerTitle);
+
+                            test.Log(Status.Info, "Title verified");
+
                             Console.WriteLine(driver.Title);
+
+
 
                         }
 
@@ -93,7 +116,7 @@ namespace YahooSmokeTest
 
                 Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
 
-                ss.SaveAsFile(@"C:\Users\Satyanarayan\source\git\YahooSmokeTest\YahooSmokeTest\Screenshot\\Local\\" + imgName + ".png");
+                ss.SaveAsFile(@"C:\Users\Satyanarayan\source\git\YahooSmokeTest\YahooSmokeTest\Screenshot\\" + FunctionLibrary.Genaratedate()+ ".png");
 
                 test.Log(Status.Fail,driver.Title + "Test case failed");
             }
@@ -111,10 +134,7 @@ namespace YahooSmokeTest
             IWebDriver driver = new ChromeDriver();
 
 
-            string imgName = DateTime.Now.ToString("dd/MM/yyyy-HH-mm-ss");
-
-            ExtentHtmlReporter reporter = new ExtentHtmlReporter("C:\\Users\\Satyanarayan\\source\\git\\YahooSmokeTest\\YahooSmokeTest\\Reports\\Beta\\" + imgName + "\\yahoo.html");
-            ExtentReports extent = new ExtentReports();
+           
             extent.AttachReporter(reporter);
 
             var test = extent.CreateTest("yahoobeta");
@@ -129,7 +149,7 @@ namespace YahooSmokeTest
 
 
 
-                for (int i = 2; i <= 11; i++)
+                for (int i = 2; i <= 10; i++)
                 {
 
                     string title = driver.FindElement(By.XPath("/html/body/div[1]/header/div/section/div/div[3]/div/nav/ul/li[" + i + "]/a")).GetAttribute("title");
@@ -182,7 +202,7 @@ namespace YahooSmokeTest
             {
                 Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
 
-                ss.SaveAsFile(@"C:\Users\Satyanarayan\source\git\YahooSmokeTest\YahooSmokeTest\Screenshot\\Beta\\" + imgName + ".png");
+                ss.SaveAsFile(@"C:\Users\Satyanarayan\source\git\YahooSmokeTest\YahooSmokeTest\Screenshot\\Beta\\" +FunctionLibrary.Genaratedate() + ".png");
                 test.Log(Status.Fail,driver.Title +"Test case failed");
             }
 
@@ -193,7 +213,7 @@ namespace YahooSmokeTest
             extent.Flush();
         }
 
-        
+      
     }
     
 }
