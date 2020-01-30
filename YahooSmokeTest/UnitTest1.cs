@@ -16,7 +16,7 @@ namespace YahooSmokeTest
 
 
 
-        ExtentHtmlReporter reporter = new ExtentHtmlReporter("C:\\Users\\Satyanarayan\\source\\git\\YahooSmokeTest\\YahooSmokeTest\\Reports\\prod\\" + FunctionLibrary.Genaratedate() + "\\yahoo.html");
+        ExtentHtmlReporter reporter = new ExtentHtmlReporter("C:\\Users\\Satyanarayan\\source\\git\\YahooSmokeTest\\YahooSmokeTest\\Reports\\prod\\" + FunctionLibrary.Genaratedate()+".html");
         ExtentReports extent = new ExtentReports();
 
 
