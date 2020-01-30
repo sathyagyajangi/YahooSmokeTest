@@ -106,7 +106,7 @@ namespace YahooSmokeTest
 
 
                 }
-                driver.Close();
+               
             }
 
 
@@ -125,6 +125,7 @@ namespace YahooSmokeTest
 
             extent.Flush();
 
+            driver.Close();
         }
 
 
