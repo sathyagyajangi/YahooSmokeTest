@@ -16,7 +16,7 @@ namespace YahooSmokeTest
 
 
 
-        ExtentHtmlReporter reporter = new ExtentHtmlReporter("C:\\Users\\Satyanarayan\\source\\git\\YahooSmokeTest\\YahooSmokeTest\\Reports\\prod\\reports.html");
+        ExtentHtmlReporter reporter = new ExtentHtmlReporter(@".\Reports\\reports.html");
         ExtentReports extent = new ExtentReports();
 
 
@@ -116,7 +116,7 @@ namespace YahooSmokeTest
 
                 Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
 
-                ss.SaveAsFile(@"C:\Users\Satyanarayan\source\git\YahooSmokeTest\YahooSmokeTest\Screenshot\\" + FunctionLibrary.Genaratedate()+ ".png");
+                ss.SaveAsFile(@".\Screenshot\\" + FunctionLibrary.Genaratedate()+ ".png");
 
                 test.Log(Status.Fail,driver.Title + "Test case failed");
             }
